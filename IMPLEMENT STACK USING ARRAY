@@ -1,0 +1,84 @@
+#include <stdio.h>
+#include<stdlib.h>
+#define max 10
+void push();
+int pop();
+void traverse();
+int stack[max];
+int top=-1;
+int main()
+{
+int ch;
+char ch1;
+do
+{
+printf("\n 1. Push");
+printf("\n 2. Pop");
+printf("\n 3. Traverse");
+printf("\n Enter ur Choice: ");
+scanf("%d", &ch);
+switch(ch)
+{
+case 1: push();
+break;
+case 2: printf("\n The deleted element is: %d", pop());
+break;
+case 3: traverse();
+break;
+default: printf("\n you have entered wrong choice");
+}
+printf("\n do you want to continue(y/n): ");
+fflush(stdin);
+scanf("%c",&ch1);
+scanf("%c",&ch1);
+}while(ch1=='y' || ch1 =='Y');
+return 0;
+}
+void push()
+{
+int item;
+if(top==max-1)
+{
+printf("\n The stack is full");
+exit(0);
+}
+else
+{
+printf("\n enter the element to be inserted: ");
+scanf("%d", &item);
+top=top +1;
+stack[top]=item;
+}
+}
+int pop()
+{
+int item;
+if(top==-1)
+{
+printf("\n the stack is empty");
+exit(0);
+}
+else
+{
+item = stack[top];
+top=top-1;
+}
+return(item);
+}
+void traverse()
+{
+int i;
+if(top==-1)
+{
+printf("\n The stack is empty");
+exit(0);
+}
+else
+{
+printf("Traverse the element");
+for(i=top;i>=0;i--)
+{
+ printf("\n%d",stack[i]);
+}
+}
+}
