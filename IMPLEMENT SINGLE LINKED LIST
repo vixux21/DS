@@ -1,0 +1,76 @@
+#include<stdio.h>
+#include<stdlib.h>
+//#include<conio.h>
+struct stack
+{
+int no;
+struct stack *next;
+} *top = NULL;
+typedef struct stack st;
+void push();
+int pop();
+void display();
+void main()
+{
+int ch, item;
+// clrscr();
+while(1)
+{
+printf("\n 1. Push");
+printf("\n 2. Pop");
+printf("\n 3. Display");
+printf("\n 4. Exit");
+printf("\n Enter ur Choice: ");
+scanf("%d",&ch);
+switch(ch)
+{
+case 1: push();
+break;
+case 2: item = pop();
+printf("\n The deleted element is %d: ", item);
+break;
+case 3:display();
+break;
+case 4: exit(0);
+default: printf("\n Wrong choice");
+}
+}
+}
+void push()
+{
+st *node;
+node = (st *)malloc((sizeof(st)));
+printf("\n Enter the Number: ");
+scanf("%d",&node->no);
+node->next =top;
+top=node;
+}
+int pop()
+{
+st *temp;
+int no;
+temp = top;
+if(top == NULL)
+{
+printf("stack is already empty");
+exit(0);
+}
+else
+{
+no = temp->no;
+top = top->next;
+free(temp);
+}
+return(no);
+}
+void display()
+{
+st *temp;
+temp=top;
+while(temp->next = NULL)
+{
+printf("\n no = %d", temp -> no );
+temp = temp->next;
+}
+printf("\n no=%d",temp->no);
+}
